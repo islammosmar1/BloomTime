@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 45 30% 97%;
+    --foreground: 220 20% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+
+    --primary: 142 45% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 340 50% 70%;
+    --secondary-foreground: 340 50% 20%;
+
+    --muted: 45 20% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 35 90% 60%;
+    --accent-foreground: 35 90% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 142 45% 45%;
+
+    --radius: 1rem;
+
+    /* Custom colors */
+    --flower-pink: 340 65% 65%;
+    --flower-petal: 340 70% 75%;
+    --sun-yellow: 45 95% 55%;
+    --sun-orange: 25 95% 55%;
+    --sky-light: 200 80% 85%;
+    --sky-sunset: 25 70% 70%;
+    --leaf-green: 142 50% 50%;
+    --stem-green: 142 40% 35%;
+
+    --sidebar-background: 45 30% 95%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 142 45% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 25% 90%;
+    --sidebar-accent-foreground: 220 20% 20%;
+    --sidebar-border: 45 20% 85%;
+    --sidebar-ring: 142 45% 45%;
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 25% 14%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 25% 14%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 142 50% 50%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 340 45% 50%;
+    --secondary-foreground: 340 20% 95%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 45 10% 65%;
+
+    --accent: 35 85% 50%;
+    --accent-foreground: 35 90% 95%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 142 50% 50%;
+
+    --flower-pink: 340 55% 55%;
+    --flower-petal: 340 60% 65%;
+    --sun-yellow: 45 90% 50%;
+    --sun-orange: 25 90% 50%;
+    --sky-light: 220 30% 25%;
+    --sky-sunset: 25 50% 30%;
+    --leaf-green: 142 45% 45%;
+    --stem-green: 142 35% 30%;
+
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 142 50% 50%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 142 50% 50%;
+  }
+
+  [dir="rtl"] {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  [dir="ltr"] {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Cairo', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-lg;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--leaf-green)) 100%);
+  }
+
+  .gradient-flower {
+    background: linear-gradient(135deg, hsl(var(--flower-pink)) 0%, hsl(var(--flower-petal)) 100%);
+  }
+
+  .gradient-sun {
+    background: linear-gradient(180deg, hsl(var(--sun-yellow)) 0%, hsl(var(--sun-orange)) 100%);
+  }
+
+  .gradient-sky {
+    background: linear-gradient(180deg, hsl(var(--sky-light)) 0%, hsl(var(--sky-sunset)) 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+}
+
+/* Petal falling animation */
+@keyframes petal-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes petal-sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes sun-set {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+}
+
+.animate-petal-fall {
+  animation: petal-fall 2s ease-in forwards, petal-sway 1s ease-in-out infinite;
+}
+
+.animate-sun-set {
+  animation: sun-set 3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
